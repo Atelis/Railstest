@@ -1,0 +1,38 @@
+
+
+<h3>Lista Amici</h3>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+     
+      
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%=  link_to friend.first_name + ' ' + friend.last_name, friend %> </td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= friend.twitter %></td>
+        <td>  <% friend.user_id %></td>
+          <% link_to 'Show', friend %>
+          <% link_to 'Edit', edit_friend_path(friend) %>
+        <td><%= link_to 'Delete', friend, class:'btn btn-outline-danger', method: :delete, data: { confirm: 'Are u sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi Amico', new_friend_path, class:"btn btn-secondary" %>
+
+
